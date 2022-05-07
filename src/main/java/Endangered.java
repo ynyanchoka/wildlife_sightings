@@ -2,7 +2,7 @@ import org.sql2o.Connection;
 
 import java.util.List;
 
-public class Endangered extends Animal implements DatabaseManagement{
+public class Endangered extends Animal implements DatabaseManagement  {
 
     private final String type;
     private String name;
@@ -30,9 +30,6 @@ public class Endangered extends Animal implements DatabaseManagement{
         this.type=type;
     }
 
-//    public String getName() {
-//        return name;
-//    }
     public int getId() {
         return id;
     }

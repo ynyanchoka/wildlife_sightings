@@ -20,6 +20,12 @@ class AnimalTest {
         Animal testAnimal = new Animal("Zebra","impervious");
         assertEquals("Zebra", testAnimal.getName());
     }
+
+    @Test
+    public void getStatus_animalInstantiatesWithStatus_Zebra() {
+        Animal testAnimal = new Animal("Zebra","impervious");
+        assertEquals("impervious", testAnimal.getType());
+    }
     //failed
 
     @Test
