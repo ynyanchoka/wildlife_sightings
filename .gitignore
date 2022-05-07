@@ -3,6 +3,12 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+out/
+out
+gradle
+gradlew.bat
+gradlew
+settings.gradle
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -15,6 +21,9 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+idea
+.idea/
+*.iml
 
 ### Eclipse ###
 .apt_generated
@@ -40,42 +49,38 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+# Directories potentially created on remote AFP share
+ Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
 
 
-# Compiled source #
-############
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.bat
-
-# Packages #
-############
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Logs and databases #
-############
-*.log
-
-# OS generated files #
-############
-.DS_Store
-.DS_Store?
+# Thumbnails
 ._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
-ehthumbs.db
-Thumbs.db
+.VolumeIcon.icns
+
+# Package Files #
+*.jar
+*.war
+*.ear
 
 # Java and Gradle #
 ############
