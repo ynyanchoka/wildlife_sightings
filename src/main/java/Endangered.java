@@ -10,12 +10,12 @@ public class Endangered {
     private int id;
 
 //HEALTH CONSTANTS
-    public static final String HEALTHY="healthy";
-    public static final String ILL="ill";
-    public static final String OKAY="okay";
+    public static final String WELLNESS="healthy";
+    public static final String SICK="ill";
+    public static final String FINE="okay";
 
 //AGE CONSTANTS
-    public static final String NEWBORN="newborn";
+    public static final String INFANT="newborn";
     public static final String YOUNG="young";
     public static final String ADULT="adult";
 
@@ -52,6 +52,9 @@ public class Endangered {
 
 
     public void save() {
+        if(this.name.equals("")||this.health.equals("")||this.age.equals("")){
+            throw new IllegalArgumentException("Please input all the fields");
+        }
         try(Connection con = DB.sql2o.open()) {
             String sql ="INSERT INTO animals (name,health,age) VALUES (:name,:health,:age)";
             this.id=(int) con.createQuery(sql,true)

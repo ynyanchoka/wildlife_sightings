@@ -1,5 +1,6 @@
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +8,9 @@ class EndangeredTest {
 
     @Rule
     public DatabaseRule database = new DatabaseRule();
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
 
     @Test
     public void endangeredAnimal_instantiatesCorrectly_true() {
@@ -46,17 +50,17 @@ class EndangeredTest {
     @Test
     public void animal_instantiatesWithHealthIll(){
         Endangered testEndangered = new Endangered("White rhino","ill","adult");
-        assertEquals(testEndangered.getHealth(), (Endangered.ILL ));
+        assertEquals(testEndangered.getHealth(), (Endangered.SICK ));
     }
     @Test
     public void animal_instantiatesWithHealthHealthy(){
         Endangered testEndangered = new Endangered("rhino","healthy","adult");
-        assertEquals(testEndangered.getHealth(), (Endangered.HEALTHY ));
+        assertEquals(testEndangered.getHealth(), (Endangered.WELLNESS ));
     }
     @Test
     public void animal_instantiatesWithHealthOkay(){
         Endangered testEndangered = new Endangered("rhino","okay","adult");
-        assertEquals(testEndangered.getHealth(), (Endangered.OKAY ));
+        assertEquals(testEndangered.getHealth(), (Endangered.FINE ));
     }
 
     @Test
@@ -72,8 +76,17 @@ class EndangeredTest {
     @Test
     public void animal_instantiatesWithAgeNewborn(){
         Endangered testEndangered = new Endangered("White rhino","ill","newborn");
-        assertEquals(testEndangered.getAge(), (Endangered.NEWBORN ));
+        assertEquals(testEndangered.getAge(), (Endangered.INFANT ));
     }
+
+//    @Test
+//    public void feed_throwsExceptionIfInputIsLefBlank(){
+//        Endangered testEndangered = new Endangered("White rhino","ill","old");
+//        exception.expect(IllegalArgumentException.class);
+//        for (this.name.equals("")||this.health.equals("")||this.age.equals("")){
+//            testEndangered.save();
+//        }
+//    }
 
 
 

@@ -11,20 +11,20 @@ class AnimalTest {
 
     @Test
     public void animal_instantiatesCorrectly_true() {
-        Animal testAnimal = new Animal("Zebra");
+        Animal testAnimal = new Animal("Zebra", "impervious");
         assertEquals(true, testAnimal instanceof Animal);
     }
 
     @Test
     public void getName_animalInstantiatesWithName_Zebra() {
-        Animal testAnimal = new Animal("Zebra");
+        Animal testAnimal = new Animal("Zebra","impervious");
         assertEquals("Zebra", testAnimal.getName());
     }
     //failed
 
     @Test
     public void save_insertsObjectIntoDatabase_Animal() {
-        Animal testAnimal = new Animal("Zebra");
+        Animal testAnimal = new Animal("Zebra","impervious");
         testAnimal.save();
         assertTrue(Animal.all().get(0).equals(testAnimal));
     }
@@ -34,9 +34,9 @@ class AnimalTest {
     //failed
     @Test
     public void all_returnsAllInstancesOfAnimal_true() {
-        Animal firstAnimal = new Animal("Lion");
+        Animal firstAnimal = new Animal("Lion","impervious");
         firstAnimal.save();
-        Animal secondAnimal = new Animal("Monkey");;
+        Animal secondAnimal = new Animal("Monkey","impervious");;
         secondAnimal.save();
         Assertions.assertEquals(true,Animal.all().equals(firstAnimal));
         Assertions.assertEquals(true, Animal.all().equals(secondAnimal));
@@ -45,7 +45,7 @@ class AnimalTest {
 
     @Test
     public void save_assignsIdToObject() {
-        Animal testAnimal = new Animal("Zebra");
+        Animal testAnimal = new Animal("Zebra","impervious");
         testAnimal.save();
         Animal savedAnimal = Animal.all().get(0);
         assertEquals(savedAnimal.getId(), savedAnimal.getId());
