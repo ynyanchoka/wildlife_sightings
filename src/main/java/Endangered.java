@@ -7,8 +7,17 @@ public class Endangered {
     private String name;
     private String age;
     private String health;
-
     private int id;
+
+//HEALTH CONSTANTS
+    public static final String HEALTHY="healthy";
+    public static final String ILL="ill";
+    public static final String OKAY="okay";
+
+//AGE CONSTANTS
+    public static final String NEWBORN="newborn";
+    public static final String YOUNG="young";
+    public static final String ADULT="adult";
 
 
     public Endangered(String name, String health,String age) {
