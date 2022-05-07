@@ -2,7 +2,7 @@ import org.sql2o.Connection;
 
 import java.util.List;
 
-public class Animal  {
+public class Animal implements DatabaseManagement {
     public String name;
     public int id;
     private String health;
@@ -11,9 +11,13 @@ public class Animal  {
     public static final String ANIMAL_TYPE="impervious";
 
 
-    public Animal(String name,String type;) {
-        this.name = name;
+    public Animal(String name,String type) {
+
         this.id = id;
+        this.name = name;
+        this.age =age;
+        this.health = health;
+        this.type=ANIMAL_TYPE;
     }
 
     public String getName() {
@@ -22,6 +26,16 @@ public class Animal  {
     public int getId() {
         return id;
     }
+    public String getAge() {
+        return age;
+    }
+    public String getHealth() {
+        return health;
+    }
+    public String getType() {
+        return type;
+    }
+
 
     public static List<Animal> all() {
         String sql = "SELECT * FROM animals";
@@ -32,9 +46,10 @@ public class Animal  {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name) VALUES (:name)";
+            String sql = "INSERT INTO animals (name,type) VALUES (:name,:type)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
+                    .addParameter("type", this.type)
                     .executeUpdate()
                     .getKey();
         }

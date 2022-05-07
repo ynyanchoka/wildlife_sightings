@@ -2,8 +2,9 @@ import org.sql2o.Connection;
 
 import java.util.List;
 
-public class Endangered {
+public class Endangered extends Animal implements DatabaseManagement{
 
+    private final String type;
     private String name;
     private String age;
     private String health;
@@ -18,17 +19,20 @@ public class Endangered {
     public static final String INFANT="newborn";
     public static final String YOUNG="young";
     public static final String ADULT="adult";
+    public static final String ANIMAL_TYPE="endangered";
 
 
-    public Endangered(String name, String health,String age) {
+    public Endangered(String name, String health,String age,String type) {
+        super(name,type);
         this.name = name;
         this.health = health;
         this.age = age;
+        this.type=type;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
     public int getId() {
         return id;
     }
@@ -41,16 +45,7 @@ public class Endangered {
     }
 
 
-
-    public static List<Endangered> all() {
-        String sql = "SELECT * FROM animals";
-        try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Endangered.class);
-        }
-    }
-
-
-
+    @Override
     public void save() {
         if(this.name.equals("")||this.health.equals("")||this.age.equals("")){
             throw new IllegalArgumentException("Please input all the fields");

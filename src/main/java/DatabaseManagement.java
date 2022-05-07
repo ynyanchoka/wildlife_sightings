@@ -1,5 +1,6 @@
-public class DatabaseManagement {
+public interface DatabaseManagement {
 //    boolean equals(Object otherObject);
-//    void save();
+    void save();
+//    void find();
 //    void delete();
 }
