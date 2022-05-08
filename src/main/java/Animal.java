@@ -9,7 +9,7 @@ public class Animal implements DatabaseManagement {
     private String health;
     private String age;
     public String type;
-    public static final String ANIMAL_TYPE="impervious";
+    public static final String ANIMAL_TYPE="Not endangered";
 
 
     public Animal(String name,String type) {
@@ -46,6 +46,9 @@ public class Animal implements DatabaseManagement {
     }
 
     public void save() {
+        if(this.name.equals("")){
+            throw new IllegalArgumentException("Please input name");
+        }
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name,type) VALUES (:name,:type)";
             this.id = (int) con.createQuery(sql, true)

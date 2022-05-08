@@ -80,14 +80,7 @@ class EndangeredTest {
         assertEquals(testEndangered.getAge(), (Endangered.INFANT ));
     }
 
-//    @Test
-//    public void feed_throwsExceptionIfInputIsLefBlank(){
-//        Endangered testEndangered = new Endangered("White rhino","ill","old");
-//        exception.expect(IllegalArgumentException.class);
-//        for (this.name.equals("")||this.health.equals("")||this.age.equals("")){
-//            testEndangered.save();
-//        }
-//    }
+
 
 
 

@@ -6,11 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+
+        staticFileLocation("/public");
 
         //home
 
@@ -51,11 +52,13 @@ public class App {
             System.out.println(age);
             String name=request.queryParams("name");
             System.out.println(name);
+
+            System.out.println(request.queryParams());
             if(type.equals(Endangered.ANIMAL_TYPE)){
-                Endangered endangered=new Endangered(name,Endangered.ANIMAL_TYPE,health,age);
+                Endangered endangered=new Endangered(name,health,age,Endangered.ANIMAL_TYPE);
                 endangered.save();
             }
-            else {
+            else  {
                 Animal animal=new Animal(name,Animal.ANIMAL_TYPE);
                 animal.save();
             }

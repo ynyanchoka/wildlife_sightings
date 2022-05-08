@@ -1,38 +1,44 @@
 {{#partial "content"}}
 
-<form action="/sightings" method="post">
-    <div class="form-group">
-        <label for="animal" class="in-line">Animal:</label>
-        <select id="animal" name="animal" type="text" class="form-control">
-            {{#if animals}}
+    <div class="card">
+        <div class="card-body">
+            <h1>Add Sightings</h1>
+            <form action="/sightings" method="post">
+                <div class="form-group">
+                    <label for="animal" class="in-line">Animal:</label>
+                    <select id="animal" name="animal" type="text" class="form-control">
+                        {{#if animals}}
 
-                {{#each animals}}
-                    <option name="animal" value="{{name}}">{{name}}</option>
-                {{/each}}
-            {{/if}}
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="location">Location:</label>
-        <select id="location" name="location" type="text" class="form-control transparentInputFields">
-            <option value="Zone A">Zone A</option>
-            <option value="Zone B">Zone B</option>
-            <option value="Zone C">Zone C</option>
-            <option value="Zone D">Zone D</option>
-            <option value="">Near the river</option>
-            <option value=""> NE Quadrant</option>
-            <option value=""> NW Quadrant</option>
-            <option value=""> SE Quadrant</option>
-            <option value=""> SW Quadrant</option>
+                            {{#each animals}}
+                                <option name="animal" value="{{name}}">{{name}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <select id="location" name="location" type="text" class="form-control ">
+                        <option value="Zone A">Zone A</option>
+                        <option value="Zone B">Zone B</option>
+                        <option value="Zone C">Zone C</option>
+                        <option value="Zone D">Zone D</option>
+                        <option value="">Near the river</option>
+                        <option value=""> NE Quadrant</option>
+                        <option value=""> NW Quadrant</option>
+                        <option value=""> SE Quadrant</option>
+                        <option value=""> SW Quadrant</option>
 
-        </select>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rangerName">Ranger Name:</label>
+                    <input type="text" name="rangerName" value="{{this.rangerName}}" class="form-control">
+                </div>
+                <br>
+                <button class="btn btn-dark" type="submit" >Add</button>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="rangerName">Ranger Name:</label>
-        <input type="text" name="rangerName" value="{{this.rangerName}}" class="form-control transparentInputFields">
-    </div>
-    <button class="btn btn-info" type="submit" name="add-sighting">Add Sighting</button>
-</form>
 {{/partial}}
 
 {{>layout.hbs}}

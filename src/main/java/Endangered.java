@@ -20,7 +20,7 @@ public class Endangered extends Animal implements DatabaseManagement  {
     public static final String INFANT="newborn";
     public static final String YOUNG="young";
     public static final String ADULT="adult";
-    public static final String ANIMAL_TYPE="endangered";
+    public static final String ANIMAL_TYPE="Endangered";
 
 
     public Endangered(String name, String health,String age,String type) {
@@ -49,11 +49,12 @@ public class Endangered extends Animal implements DatabaseManagement  {
             throw new IllegalArgumentException("Please input all the fields");
         }
         try(Connection con = DB.sql2o.open()) {
-            String sql ="INSERT INTO animals (name,health,age) VALUES (:name,:health,:age)";
+            String sql ="INSERT INTO animals (name,health,age,type) VALUES (:name,:health,:age,:type)";
             this.id=(int) con.createQuery(sql,true)
                     .addParameter("name",this.name)
                     .addParameter("health",this.health)
                     .addParameter("age",this.age)
+                    .addParameter("type",this.type)
                     .executeUpdate()
                     .getKey();
         }

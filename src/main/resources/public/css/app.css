@@ -1,0 +1,28 @@
+
+body {
+    background-image: url("../images/rhino-g8eaaaddb6_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body,html {
+  height: 100%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background-color: rgb(234,192,110);
+  margin-top: 50px;
+
+
+}
+.animals.card {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+}
+.animals.card {
+    flex: 0 0 200px;
+    margin: 10px;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
