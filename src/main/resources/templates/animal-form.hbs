@@ -1,27 +1,27 @@
 {{#partial "content"}}
-    <div class="card">
     <div class="form">
         <form action="/animals" method="post">
-            <h1>Add an Animal</h1>
+            <h1>Create Animal</h1>
+            <hr>
 
             {{#if endangered}}
                 <div class="form-group">
                     <label for="type">Type</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="form-check" name="type" id="defaultCheck1" value="animal"
-                               onClick="window.location = '/create/animal';" >
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="normal"
+                               onClick="window.location = '/animals/new';" >
                         <label class="form-check-label" for="inlineRadio1">Normal</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="type" id="defaultCheck1" value="endangered"
-                               onClick="window.location = '/create/animal/endangered';" checked>
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="endangered"
+                               onClick="window.location = '/animals/new/endangered';" checked>
                         <label class="form-check-label" for="inlineRadio2">Endangered</label>
 
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control form-control-lg" id="name" name="name"  required>
+                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Input Name..." required>
                 </div>
                 <div class="form-group">
                     <div class="input-group mb-3">
@@ -29,13 +29,9 @@
                             <label class="input-group-text" for="health">Health</label>
                         </div>
                         <select class="custom-select" id="health" name="health">
-                            <option selected>Choose...</option>
-                            {{#if health }}
-                                {{#each health as |h|}}
-                                    <option name="health" value={{h}}>{{h}}</option>
-                                {{/each}}
-
-                            {{/if}}
+                            <option value="Healthy">Healthy</option>
+                            <option value="Okay">Okay</option>
+                            <option value="Ill">Ill</option>
                         </select>
                     </div>
                 </div>
@@ -45,13 +41,11 @@
                             <label class="input-group-text" for="age">Age</label>
                         </div>
                         <select class="custom-select" id="age" name="age">
-                            <option selected>Choose...</option>
-                            {{#if age }}
-                                {{#each age as |a|}}
-                                    <option name="age" value={{a}}>{{a}}</option>
-                                {{/each}}
 
-                            {{/if}}
+
+                            <option value="Newborn">Newborn</option>
+                            <option value="Young">Young</option>
+                            <option value="Adult">Adult</option>
                         </select>
                     </div>
                 </div>
@@ -59,29 +53,29 @@
                 <div class="form-group">
                     <label for="type">Type</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="type" id="defaultCheck1" value="animal"
-                               onClick="window.location = '/create/animal';" checked>
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Common"
+                               onClick="window.location = '/animals/new';" checked>
                         <label class="form-check-label" for="inlineRadio1">Normal</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="type" id="defaultCheck1" value="endangered"
-                               onClick="window.location = '/create/animal/endangered';">
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="endangered"
+                               onClick="window.location = '/animals/new/endangered';">
                         <label class="form-check-label" for="inlineRadio2">Endangered</label>
 
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="" required>
+                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Input Name..." required>
                 </div>
 
             {{/if}}
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg"> Add </button>
+                <button type="submit" class="btn btn-success btn-lg"> Create </button>
             </div>
 
         </form>
     </div>
-    </div>
+
 {{/partial}}
 {{> layout.hbs}}
