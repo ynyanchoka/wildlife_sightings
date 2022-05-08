@@ -20,11 +20,6 @@ The following is a live-link to the project's site
 
 Link : `.....`
 
-## Behaviour Driven Development (BDD)
-### Input
-- User fills a form that specifies the hero's details
-### Output
-- Output is stored in a database.
 
 ## Setup/Installation Requirements
 #### To recreate database:
