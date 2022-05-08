@@ -4,11 +4,12 @@ import java.util.List;
 
 public class Endangered extends Animal implements DatabaseManagement  {
 
+
     private final String type;
     private String name;
     private String age;
     private String health;
-    private int id;
+    private static int id;
 
 //HEALTH CONSTANTS
     public static final String WELLNESS="healthy";

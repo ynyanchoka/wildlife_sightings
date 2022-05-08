@@ -59,12 +59,20 @@ class AnimalTest {
 
 //    @Test
 //    public void find_returnsAnimalWithSameId_secondAnimal() {
-//        Animal firstAnimal = new Animal("Lion");
+//        Animal firstAnimal = new Animal("Lion","impervious");
 //        firstAnimal.save();
-//        Animal secondAnimal = new Animal("Monkey");
+//        Animal secondAnimal = new Animal("Monkey","impervious");
 //        secondAnimal.save();
 //        assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
 //    }
+
+    @Test
+    public void delete_deletesAnimal_true() {
+        Animal testAnimal = new Animal("Zebra","impervious");
+        testAnimal.save();
+        testAnimal.delete();
+        assertEquals(null,Animal.find(testAnimal.getId()));
+    }
 
 
 

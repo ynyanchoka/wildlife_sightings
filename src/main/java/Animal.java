@@ -3,6 +3,7 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class Animal implements DatabaseManagement {
+
     public String name;
     public int id;
     private String health;
@@ -13,7 +14,7 @@ public class Animal implements DatabaseManagement {
 
     public Animal(String name,String type) {
 
-        this.id = id;
+//        this.id = id;
         this.name = name;
         this.age =age;
         this.health = health;
@@ -59,9 +60,18 @@ public class Animal implements DatabaseManagement {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals where id=:id";
             Animal animal = con.createQuery(sql)
-                    .addParameter("id", id)
+                    .addParameter("id",id)
                     .executeAndFetchFirst(Animal.class);
             return animal;
+        }
+    }
+    @Override
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM animals WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
         }
     }
 
