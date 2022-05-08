@@ -6,7 +6,6 @@ By Ymelda Monari
 ## Table of contents
 + [Description](#Description)
 + [Project resources](#project-resources)
-+ [Behaviour Driven Development (BDDs](#BDD)
 + [Setup/Installation Requirements](#setupinstallation-requirements)
 + [Technologies used](#technologies-used)
 + [Contact Information](#contact-information)
