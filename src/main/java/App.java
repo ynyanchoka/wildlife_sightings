@@ -106,21 +106,41 @@ public class App {
             model.put("animals",Animal.all());
             return new ModelAndView(model,"sightings-form.hbs");
         },new HandlebarsTemplateEngine());
-
-        //posting a sighting form
+//
+//        posting a sighting form
         post("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            int animal_id = Integer.parseInt(request.queryParams("animal"));
+            int animalId = Integer.parseInt(request.queryParams("animal"));
             String location = request.queryParams("location");
-            String ranger_name = request.queryParams("rangerName");
+            String rangerName = request.queryParams("rangerName");
+            System.out.println(request.queryParams());
+//            String animals = request.queryParams("animals");
 
 
             try {
-                Sightings sightings = new Sightings(animal_id, location, ranger_name);
+                Sightings sightings = new Sightings(animalId, location, rangerName);
             } catch (IllegalArgumentException exception) {
                 System.out.println("Please enter Ranger name.");
             }
             return new ModelAndView(model, "/sightings-success.hbs");
+        },new HandlebarsTemplateEngine());
+
+//        post("/sightings",(request, response) -> {
+//            Map<String,Object> model=new HashMap<String, Object>();
+//            String location = request.queryParams("location");
+//            String rangerName = request.queryParams("rangerName");
+//            int animalId = Integer.parseInt(request.queryParams("animal"));
+//
+//            Sightings sighting=new Sightings(animalId,location,rangerName);
+//            sighting.save();
+//            System.out.println(request.queryParams());
+//            return new ModelAndView(model,"/sightings-success.hbs");
+//        },new HandlebarsTemplateEngine());
+
+        get("/sightings",(request, response) -> {
+            Map<String,Object> model=new HashMap<String, Object>();
+            model.put("sightings",Animal.all());
+            return new ModelAndView(model,"sightings-detail.hbs");
         },new HandlebarsTemplateEngine());
 
 //    
