@@ -1,5 +1,6 @@
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
@@ -12,6 +13,8 @@ class SightingsTest {
 
     @Rule
     public DatabaseRule database = new DatabaseRule();
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
     @Test
     public void sighting_instantiatesCorrectly_true() {
         Sightings testSightings = new Sightings(1,"Zone A","Monari");
@@ -86,5 +89,19 @@ class SightingsTest {
         testSightings.delete();
         assertEquals(null,Sightings.find(testSightings.getId()));
     }
+
+//     if (rangerName.equals("")) {
+//        throw new IllegalArgumentException("Please enter Ranger name.");
+//    }
+
+        @Test
+    public void input_throwsExceptionIfBlankField(){
+        Animal testAnimal = new Animal("Zebra","impervious");
+        exception.expect(IllegalArgumentException.class);
+//        for(this.name.equals("");;){
+//            testAnimal.save();
+//        }
+    }
+
 
 }

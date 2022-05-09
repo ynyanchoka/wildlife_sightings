@@ -1,8 +1,14 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Vast+Shadow&display=swap');
+*{
+font-family: 'Roboto', sans-serif;
+}
 body {
     background-image: url("../images/rhino-g8eaaaddb6_1920.jpg");
     background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
 }
 body,html {
   height: 100%;
@@ -28,3 +34,26 @@ body,html {
     margin: 10px;
     box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 }
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+    background-color: rgb(234,192,110);
+
+ }
+.home.btn {
+   position: absolute;
+   top: 50%;
+}
+
+.home{
+margin-top:70px;
+}
+.wrapper {
+    text-align: center;
+}
+
+

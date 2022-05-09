@@ -15,11 +15,16 @@ public class Sightings {
 
 
     public Sightings(int animalId, String location, String rangerName) {
+
+
         this.rangerName=rangerName;
         this.location = location;
         this.animalId=animalId;
         this.time = new Timestamp(date.getTime());
-        this.save();
+
+        if (rangerName.equals("")) {
+            throw new IllegalArgumentException("Please enter Ranger name.");
+        }
     }
 
 
