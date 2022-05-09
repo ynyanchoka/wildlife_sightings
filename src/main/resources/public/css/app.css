@@ -41,7 +41,7 @@ body,html {
     width: 100%;
     color: black;
     text-align: center;
-    background-color: rgb(234,192,110);
+    color:white;
 
  }
 .home.btn {
@@ -50,10 +50,18 @@ body,html {
 }
 
 .home{
-margin-top:70px;
+margin-top:100px;
 }
 .wrapper {
     text-align: center;
 }
+
+.tracker{
+    font-weight: 900;
+    font-size:100px;
+    text-align:center;
+    color:rgb(80,56,32);
+}
+
 
 

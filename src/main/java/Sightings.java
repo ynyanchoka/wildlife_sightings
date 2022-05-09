@@ -51,24 +51,25 @@ public class Sightings {
 
 
     public static List<Sightings> all() {
-        String sql = "SELECT * FROM sightings";
+
         try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings";
             return con.createQuery(sql).executeAndFetch(Sightings.class);
         }
     }
     //Listing sightings by animal id
-    public static List<Sightings> allByAnimal(int animalId) {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM sightings WHERE animalId = :animalId ";
-            return con.createQuery(sql)
-                    .addParameter("animalId", animalId)
-                    .executeAndFetch(Sightings.class);
-        }
-    }
+//    public static List<Sightings> allByAnimal(int animalId) {
+//        try(Connection con = DB.sql2o.open()) {
+//            String sql = "SELECT * FROM sightings WHERE animalId = :animalId ";
+//            return con.createQuery(sql)
+//                    .addParameter("animalId", animalId)
+//                    .executeAndFetch(Sightings.class);
+//        }
+//    }
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (animalId,location,rangerName,time) VALUES (:animalId,:location,:rangerName,:now())";
+            String sql = "INSERT INTO sightings (animalId,location,rangerName,time) VALUES (:animalId,:location,:rangerName,:time)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("animalId", this.animalId)
                     .addParameter("location", this.location)

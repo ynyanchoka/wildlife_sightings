@@ -1,3 +1,4 @@
+import com.github.jknack.handlebars.cache.ConcurrentMapTemplateCache;
 import org.sql2o.Connection;
 
 import java.util.List;
@@ -9,21 +10,24 @@ public class Animal implements DatabaseManagement {
     private String health;
     private String age;
     public String type;
-    public static final String ANIMAL_TYPE="Not endangered";
+    public static final String TYPE="Not endangered";
 
 
     public Animal(String name,String type) {
 
-//        this.id = id;
+        this.id = id;
         this.name = name;
         this.age =age;
         this.health = health;
-        this.type=ANIMAL_TYPE;
+        this.type= type;
 
-        if(this.name.equals("")){
+        if(name.equals("")){
             throw new UnsupportedOperationException("Please input name of animal");
         }
     }
+
+
+
 
     public String getName() {
         return name;

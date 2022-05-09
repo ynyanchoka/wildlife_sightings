@@ -20,13 +20,7 @@ public class App {
             return new ModelAndView(model,"index.hbs");
         },new HandlebarsTemplateEngine());
 
-        //delete animals
-        get("/animals/:id/delete", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            Animal.find(Integer.parseInt(request.params(":id"))).delete();
-            response.redirect("animal-detail.hbs");
-            return new ModelAndView(model, "animal-detail.hbs");
-        } ,new HandlebarsTemplateEngine());
+
 
         //form impervious animals
         get( "/animals/new", (request, response) -> {
@@ -53,21 +47,15 @@ public class App {
             System.out.println(age);
             String name=request.queryParams("name");
             System.out.println(name);
-
-            if(type.equals(Endangered.ANIMAL_TYPE)){
-                Endangered endangered=new Endangered(name,health,age,Endangered.ANIMAL_TYPE);
+            if(type.equals(Endangered.TYPE)){
+                Endangered endangered=new Endangered(name,health,age,Endangered.TYPE);
                 endangered.save();
             }
             else  {
-                Animal animal=new Animal(name,Animal.ANIMAL_TYPE);
+                Animal animal=new Animal(name,Animal.TYPE);
                 animal.save();
             }
 
-            try {
-                Animal animal = new Animal(name,type);
-            } catch (UnsupportedOperationException exception) {
-                System.out.println("Please input name of animal.");
-            }
 
             return new ModelAndView(model,"animal-success.hbs");
         },new HandlebarsTemplateEngine());
@@ -116,10 +104,11 @@ public class App {
             int animalId = Integer.parseInt((request.queryParams("animal")));
             String location = request.queryParams("location");
             String rangerName = request.queryParams("rangerName");
-
+            System.out.println(Sightings.all());
 
             try {
                 Sightings sightings = new Sightings(animalId, location, rangerName);
+                sightings.save();
             } catch (IllegalArgumentException exception) {
                 System.out.println("Please enter Ranger name.");
             }
@@ -127,13 +116,20 @@ public class App {
         },new HandlebarsTemplateEngine());
 
 
+
         get("/sightings",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
             model.put("sightings",Sightings.all());
+            System.out.println(Sightings.all());
             return new ModelAndView(model,"sightings-detail.hbs");
         },new HandlebarsTemplateEngine());
 
-//    
+
+
+
+
+
+
 
     }
 }

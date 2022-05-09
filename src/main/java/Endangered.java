@@ -1,7 +1,5 @@
 import org.sql2o.Connection;
 
-import java.util.List;
-
 public class Endangered extends Animal implements DatabaseManagement  {
 
 
@@ -20,7 +18,7 @@ public class Endangered extends Animal implements DatabaseManagement  {
     public static final String INFANT="newborn";
     public static final String YOUNG="young";
     public static final String ADULT="adult";
-    public static final String ANIMAL_TYPE="Endangered";
+    public static final String TYPE ="Endangered";
 
 
     public Endangered(String name, String health,String age,String type) {
@@ -45,6 +43,9 @@ public class Endangered extends Animal implements DatabaseManagement  {
     public String getAge() {
         return age;
     }
+//    public String getType() {
+//        return type;
+//    }
 
 
     @Override

@@ -24,29 +24,18 @@ class EndangeredTest {
         Endangered testEndangered = new Endangered("White rhino","ill","adult","endangered");
         assertEquals("White rhino", testEndangered.getName());
     }
+    @Test
+    public void all_returnsAllInstancesOfEndangeredAnimals_true() {
+        Endangered firstEndangered = new Endangered(" White Rhino", "ill","adult","endangered");
+        firstEndangered.save();
+        Endangered secondEndangered = new Endangered("Leopard", "healthy","young","endangered");
+        secondEndangered.save();
+        assertTrue(true, String.valueOf(Endangered.all().get(0).equals(firstEndangered)));
+        assertTrue(true, String.valueOf(Endangered.all().get(1).equals(secondEndangered)));
+    }
 
-//    @Test
-//    public void save_insertsObjectIntoDatabase_Endangered() {
-//        Endangered testEndangered = new Endangered("White rhino","ill","adult");
-//        testEndangered.save();
-//        assertTrue(Endangered.all().get(0).equals(testEndangered));
-//    }
-//    @Test
-//    public void all_returnsAllInstancesOfEndangeredAnimals_true() {
-//        Endangered firstEndangered = new Endangered(" White Rhino", "ill","adult");
-//        firstEndangered.save();
-//        Endangered secondEndangered = new Endangered("Leopard", "healthy","young");
-//        secondEndangered.save();
-//        assertEquals(true, Endangered.all().get(0).equals(firstEndangered));
-//        assertEquals(true, Endangered.all().get(1).equals(secondEndangered));
-//    }
-//        @Test
-//        public void save_assignsIdToObject() {
-//            Endangered testEndangered = new Endangered("White rhino","ill","adult");
-//            testEndangered.save();
-//            Endangered savedEndangered = Endangered.all().get(0);
-//            assertEquals(testEndangered.getId(), savedEndangered.getId());
-//        }
+
+
 
     @Test
     public void animal_instantiatesWithHealthIll(){
@@ -79,6 +68,9 @@ class EndangeredTest {
         Endangered testEndangered = new Endangered("White rhino","ill","newborn","endangered");
         assertEquals(testEndangered.getAge(), (Endangered.INFANT ));
     }
+
+
+
 
 
 
