@@ -17,9 +17,11 @@ body,html {
 
 }
 .animals.card {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 11px;
 }
 .animals.card {
     flex: 0 0 200px;

@@ -1,31 +1,33 @@
 {{#partial "content"}}
     <div class="animals">
-        {{#if sightings}}
-            {{#each sightings}}
+    {{#if sightings}}
+        {{#each sightings}}
                 <div class="card " style="width: 18rem;">
-                        <h5 >{{sightings.animalId}}</h5>
-                        <p >{{sightings.rangerName}}</p>
-                        <p >{{sightings.location}}</p>
-                        <p >{{sightings.time}}</p>
+                    <h5 >{{animalId}}</h5>
+                    <p >{{rangerName}}</p>
+                    <p >{{location}}</p>
+                    <p >{{time}}</p>
 
-                        <a href="/sightings/:id/delete"><button class="btn">Delete</button></a>
+                    <a href="/sightings/:id/delete"><button class="btn">Delete</button></a>
                 </div>
-                {{/each}}
-            {{#each animals}}
+        {{/each}}
+        {{#each animals}}
                 <div class="card " style="width: 18rem;">
                     <h5 >{{animals}}</h5>
 
                     <a href="/sightings/:id/delete"><button class="btn">Delete</button></a>
                 </div>
-            {{/each}}
-            {{/if}}
-        {{else}}
-            <h2>No sightings! Create <a href="/sightings/new">here</a></h2>
+        {{/each}}
+    {{/if}}
+{{else}}
+        <h2>No sightings! Create <a href="/sightings/new">here</a></h2>
 
     </div>
 
 {{/partial}}
 {{> layout.hbs}}
+
+
 
 
 

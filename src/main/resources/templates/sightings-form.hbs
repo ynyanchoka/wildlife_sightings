@@ -5,12 +5,14 @@
             <h1>Add Sightings</h1>
             <form action="/sightings" method="post">
                 <div class="form-group">
+
+
                     <label for="animal" class="in-line">Animal:</label>
                     <select id="animal" name="animal" type="text" class="form-control">
                         {{#if animals}}
 
                             {{#each animals}}
-                                <option name="animal" value="{{name}}">{{name}}</option>
+                                <option name="animal" value="{{id}}">{{name}}</option>
                             {{/each}}
                         {{/if}}
                     </select>
@@ -18,10 +20,10 @@
                 <div class="form-group">
                     <label for="location">Location:</label>
                     <select id="location" name="location" type="text" class="form-control ">
-                        <option value="Zone A">Zone A</option>
-                        <option value="Zone B">Zone B</option>
-                        <option value="Zone C">Zone C</option>
-                        <option value="Zone D">Zone D</option>
+                        <option value="ZoneA">Zone A</option>
+                        <option value="ZoneB">Zone B</option>
+                        <option value="ZoneC">Zone C</option>
+                        <option value="ZoneD">Zone D</option>
                         <option value="">Near the river</option>
                         <option value=""> NE Quadrant</option>
                         <option value=""> NW Quadrant</option>

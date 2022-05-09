@@ -75,7 +75,14 @@ public class Animal implements DatabaseManagement {
             con.createQuery(sql)
                     .addParameter("id", this.id)
                     .executeUpdate();
+            String sql2 = "DELETE from sightings WHERE animal_id = :id";
+            con.createQuery(sql2)
+                    .addParameter("id", id)
+                    .executeUpdate();
         }
     }
+
+
+
 
 }

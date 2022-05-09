@@ -19,7 +19,7 @@ public class Sightings {
         this.location = location;
         this.animalId=animalId;
         this.time = new Timestamp(date.getTime());
-
+        this.save();
     }
 
 
@@ -49,6 +49,15 @@ public class Sightings {
         String sql = "SELECT * FROM sightings";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Sightings.class);
+        }
+    }
+    //Listing sightings by animal id
+    public static List<Sightings> allByAnimal(int animalId) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings WHERE animalId = :animalId ";
+            return con.createQuery(sql)
+                    .addParameter("animalId", animalId)
+                    .executeAndFetch(Sightings.class);
         }
     }
 

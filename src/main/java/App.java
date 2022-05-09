@@ -24,6 +24,7 @@ public class App {
         get("/animals/:id/delete", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             Animal.find(Integer.parseInt(request.params(":id"))).delete();
+            response.redirect("animal-detail.hbs");
             return new ModelAndView(model, "animal-detail.hbs");
         } ,new HandlebarsTemplateEngine());
 
@@ -110,14 +111,13 @@ public class App {
             return new ModelAndView(model,"sightings-form.hbs");
         },new HandlebarsTemplateEngine());
 //
-//        posting a sighting form
+//        post a sighting form
         post("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            int animalId = Integer.parseInt(request.queryParams("animal"));
+            int animalId = Integer.parseInt((request.queryParams("animal")));
             String location = request.queryParams("location");
             String rangerName = request.queryParams("rangerName");
             System.out.println(request.queryParams());
-//            String animals = request.queryParams("animals");
 
 
             try {
@@ -128,21 +128,10 @@ public class App {
             return new ModelAndView(model, "/sightings-success.hbs");
         },new HandlebarsTemplateEngine());
 
-//        post("/sightings",(request, response) -> {
-//            Map<String,Object> model=new HashMap<String, Object>();
-//            String location = request.queryParams("location");
-//            String rangerName = request.queryParams("rangerName");
-//            int animalId = Integer.parseInt(request.queryParams("animal"));
-//
-//            Sightings sighting=new Sightings(animalId,location,rangerName);
-//            sighting.save();
-//            System.out.println(request.queryParams());
-//            return new ModelAndView(model,"/sightings-success.hbs");
-//        },new HandlebarsTemplateEngine());
 
         get("/sightings",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
-            model.put("sightings",Animal.all());
+            model.put("sightings",Sightings.all());
             return new ModelAndView(model,"sightings-detail.hbs");
         },new HandlebarsTemplateEngine());
 
