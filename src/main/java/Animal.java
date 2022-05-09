@@ -19,6 +19,10 @@ public class Animal implements DatabaseManagement {
         this.age =age;
         this.health = health;
         this.type=ANIMAL_TYPE;
+
+        if(this.name.equals("")){
+            throw new UnsupportedOperationException("Please input name of animal");
+        }
     }
 
     public String getName() {
@@ -46,9 +50,7 @@ public class Animal implements DatabaseManagement {
     }
 
     public void save() {
-        if(this.name.equals("")){
-            throw new IllegalArgumentException("Please input name");
-        }
+
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name,type) VALUES (:name,:type)";
             this.id = (int) con.createQuery(sql, true)

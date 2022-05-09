@@ -29,6 +29,10 @@ public class Endangered extends Animal implements DatabaseManagement  {
         this.health = health;
         this.age = age;
         this.type=type;
+
+        if(this.name.equals("")){
+            throw new UnsupportedOperationException("Please input name of animal");
+        }
     }
 
     public int getId() {
@@ -45,9 +49,6 @@ public class Endangered extends Animal implements DatabaseManagement  {
 
     @Override
     public void save() {
-        if(this.name.equals("")||this.health.equals("")||this.age.equals("")){
-            throw new IllegalArgumentException("Please input all the fields");
-        }
         try(Connection con = DB.sql2o.open()) {
             String sql ="INSERT INTO animals (name,health,age,type) VALUES (:name,:health,:age,:type)";
             this.id=(int) con.createQuery(sql,true)

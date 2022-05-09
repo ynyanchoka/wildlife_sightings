@@ -54,7 +54,6 @@ public class App {
             String name=request.queryParams("name");
             System.out.println(name);
 
-            System.out.println(request.queryParams());
             if(type.equals(Endangered.ANIMAL_TYPE)){
                 Endangered endangered=new Endangered(name,health,age,Endangered.ANIMAL_TYPE);
                 endangered.save();
@@ -62,6 +61,12 @@ public class App {
             else  {
                 Animal animal=new Animal(name,Animal.ANIMAL_TYPE);
                 animal.save();
+            }
+
+            try {
+                Animal animal = new Animal(name,type);
+            } catch (UnsupportedOperationException exception) {
+                System.out.println("Please input name of animal.");
             }
 
             return new ModelAndView(model,"animal-success.hbs");
@@ -98,12 +103,6 @@ public class App {
         },new HandlebarsTemplateEngine());
 
 
-//        get("/posts/delete", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            Post.clearAllPosts();
-//            return new ModelAndView(model, "success.hbs");
-//        }, new HandlebarsTemplateEngine());
-
 //        /get sightings form
         get("/sightings/new",(request, response) -> {
             Map<String,Object> model=new HashMap<String, Object>();
@@ -117,7 +116,6 @@ public class App {
             int animalId = Integer.parseInt((request.queryParams("animal")));
             String location = request.queryParams("location");
             String rangerName = request.queryParams("rangerName");
-            System.out.println(request.queryParams());
 
 
             try {
