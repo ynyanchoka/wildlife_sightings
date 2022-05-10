@@ -17,7 +17,7 @@ This is a java web application that allows rangers to track wildlife sightings i
 ## Project resources
 The following is a live-link to the project's site
 
-Link : `.....`
+Link : `https://conserve-wildlife-tracker.herokuapp.com/`
 
 
 ## Setup/Installation Requirements
@@ -41,7 +41,7 @@ Link : `.....`
 
 #### To clone the repository:
 - Clone this repository using:
-  git clone 'https://github.com/ynyanchoka/wildlife_sightings.git'
+  git clone 'https://github.com/ynyanchoka/wildlife_sightings'
 - Navigate to the directory:
   cd wildlife_sightings
 - Open the directory with your preferred text editor.
