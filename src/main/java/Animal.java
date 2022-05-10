@@ -1,6 +1,7 @@
 import org.sql2o.Connection;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Animal implements DatabaseManagement {
 
@@ -82,21 +83,17 @@ public class Animal implements DatabaseManagement {
             return animal;
         }
     }
+
     @Override
-    public void delete() {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "DELETE FROM animals WHERE id = :id;";
-            con.createQuery(sql)
-                    .addParameter("id", this.id)
-                    .executeUpdate();
-            String sql2 = "DELETE from sightings WHERE animal_id = :id";
-            con.createQuery(sql2)
-                    .addParameter("id", id)
-                    .executeUpdate();
-        }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animal)) return false;
+        Animal animal = (Animal) o;
+        return getId() == animal.getId() && Objects.equals(getName(), animal.getName()) && Objects.equals(getHealth(), animal.getHealth()) && Objects.equals(getAge(), animal.getAge()) && Objects.equals(getType(), animal.getType());
     }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getId(), getHealth(), getAge(), getType());
+    }
 }

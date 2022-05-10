@@ -35,4 +35,5 @@ public class Endangered extends Animal implements DatabaseManagement {
     }
 
 
+
 }
