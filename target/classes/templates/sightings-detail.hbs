@@ -1,0 +1,44 @@
+
+{{> layout.hbs}}
+
+
+<br>
+
+        <div class="container">
+                <table class="table table-sm table-dark ">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Animal ID</th>
+                        <th scope="col">Ranger Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{#if sightings}}
+                            {{#each sightings}}
+                                            <tr>
+                                                <th scope="row">{{animalId}}</th>
+                                                <td>{{rangerName}}</td>
+                                                <td>{{location}}</td>
+                                                <td>{{time}}</td>
+                                            </tr>
+                            {{/each}}
+                        {{else}}
+                            <h2>No sightings!Add <a href="/sightings/new">here</a></h2>
+                        {{/if}}
+                    </tbody>
+                </table>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+

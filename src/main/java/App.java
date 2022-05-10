@@ -9,7 +9,17 @@ import java.util.Map;
 import static spark.Spark.*;
 
 public class App {
+
+    static int getHerokuAssignedPort() {
+
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
+    }
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
 
         staticFileLocation("/public");
 
@@ -47,16 +57,14 @@ public class App {
             System.out.println(age);
             String name=request.queryParams("name");
             System.out.println(name);
-            if(type.equals(Endangered.TYPE)){
-                Endangered endangered=new Endangered(name,health,age,Endangered.TYPE);
+            if(type.equals(Endangered.species)){
+                Endangered endangered=new Endangered(name,health,age,Endangered.species);
                 endangered.save();
             }
             else  {
-                Animal animal=new Animal(name,Animal.TYPE);
+                Animal animal=new Animal(name,Animal.species);
                 animal.save();
             }
-
-
             return new ModelAndView(model,"animal-success.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -97,7 +105,7 @@ public class App {
             model.put("animals",Animal.all());
             return new ModelAndView(model,"sightings-form.hbs");
         },new HandlebarsTemplateEngine());
-//
+
 //        post a sighting form
         post("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();

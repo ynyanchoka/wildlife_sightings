@@ -1,24 +1,9 @@
 import org.sql2o.Connection;
 
-public class Endangered extends Animal implements DatabaseManagement  {
-
-
-    private final String type;
-    private String name;
-    private String age;
-    private String health;
+public class Endangered extends Animal implements DatabaseManagement {
     private static int id;
 
-//HEALTH CONSTANTS
-    public static final String WELLNESS="healthy";
-    public static final String SICK="ill";
-    public static final String FINE="okay";
-
-//AGE CONSTANTS
-    public static final String INFANT="newborn";
-    public static final String YOUNG="young";
-    public static final String ADULT="adult";
-    public static final String TYPE ="Endangered";
+    public static final String species ="Endangered";
 
 
     public Endangered(String name, String health,String age,String type) {
@@ -28,24 +13,11 @@ public class Endangered extends Animal implements DatabaseManagement  {
         this.age = age;
         this.type=type;
 
-        if(this.name.equals("")){
-            throw new UnsupportedOperationException("Please input name of animal");
-        }
+//        if(this.name.equals("")){
+//            throw new UnsupportedOperationException("Please input name of animal");
+//        }
     }
 
-    public int getId() {
-        return id;
-    }
-    public String getHealth() {
-        return health;
-    }
-
-    public String getAge() {
-        return age;
-    }
-//    public String getType() {
-//        return type;
-//    }
 
 
     @Override

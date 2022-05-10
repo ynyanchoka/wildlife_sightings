@@ -1,4 +1,3 @@
-import com.github.jknack.handlebars.cache.ConcurrentMapTemplateCache;
 import org.sql2o.Connection;
 
 import java.util.List;
@@ -7,10 +6,21 @@ public class Animal implements DatabaseManagement {
 
     public String name;
     public int id;
-    private String health;
-    private String age;
+    public  String health;
+    public  String age;
     public String type;
-    public static final String TYPE="Not endangered";
+    public static String species="Not endangered";
+
+    //HEALTH CONSTANTS
+    public static final String WELLNESS="healthy";
+    public static final String SICK="ill";
+    public static final String FINE="okay";
+
+    //AGE CONSTANTS
+    public static final String INFANT="newborn";
+    public static final String YOUNG="young";
+    public static final String ADULT="adult";
+
 
 
     public Animal(String name,String type) {
@@ -22,11 +32,9 @@ public class Animal implements DatabaseManagement {
         this.type= type;
 
         if(name.equals("")){
-            throw new UnsupportedOperationException("Please input name of animal");
+            throw new IllegalArgumentException("Please input name of animal");
         }
     }
-
-
 
 
     public String getName() {

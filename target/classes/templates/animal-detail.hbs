@@ -1,0 +1,31 @@
+
+{{> layout.hbs}}
+
+<br>
+
+<div class="container">
+    <table class="table table-sm table-dark ">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Animal name</th>
+            <th scope="col">Type </th>
+            <th scope="col">Health</th>
+            <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#if animals}}
+            {{#each animals}}
+                <tr>
+                    <th scope="row">{{name}}</th>
+                    <td>{{type}}</td>
+                    <td>{{health}}</td>
+                    <td>{{age}}</td>
+                </tr>
+            {{/each}}
+        {{else}}
+            <h2>No animals! Create some animals <a href="/animals/new">here</a></h2>
+        {{/if}}
+        </tbody>
+    </table>
+</div>

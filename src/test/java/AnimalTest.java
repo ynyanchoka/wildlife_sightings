@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+
 
 class AnimalTest {
     @Rule
@@ -58,26 +59,6 @@ class AnimalTest {
         Animal savedAnimal = Animal.all().get(0);
         assertEquals(savedAnimal.getId(), savedAnimal.getId());
     }
-
-    @Test
-    public void ensureNameFieldCannotBeEmpty(){
-        Animal testAnimal=new Animal("","normal");
-        try {
-            testAnimal.save();
-        }catch (IllegalArgumentException e){
-
-        }
-    }
-
-
-
-
-
-
-
-
-
-
 
 
 

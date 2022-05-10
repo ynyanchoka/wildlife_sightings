@@ -32,6 +32,7 @@ Link : `.....`
 - CREATE TABLE animals (id serial PRIMARY KEY, name varchar, health varchar, age varchar, type varchar);
 
 - CREATE TABLE sightings (id serial PRIMARY KEY, animalId int, location varchar, rangerName varchar, timestamp timestamp);
+- ALTER TABLE sightings ADD FOREIGN KEY (animalId) REFERENCES animals(id);
 
 - CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;
 
